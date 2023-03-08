@@ -14,7 +14,8 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'test', 'production'] as const)
     .default('production'),
-  PORT: z.number().default(3333),
+  DATABASE_CLIENT: z.enum(['sqlite', 'pg'] as const),
+  PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string().nonempty(),
 })
 
